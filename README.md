@@ -3,21 +3,7 @@ For lecture usage on the ML Operation (MLOps) course in Amazon Machine Learning 
 
 ## Introduction
 
-<img align="left" src="imgs/MLU_logo.png">
-
-Data Scientists and ML developers need more than a Jupyter notebook to create a ML model, to test it, to put it into production and to integrate it with a portal and/or a basic web/mobile application, in a reliable and flexible way. 
-
-</br></br></br></br>
-
-There are two basic questions that you should consider when you start developing a ML model for a real Business Case:
-
-1. How long would it take your organization to deploy a change that involves a single line of code?
-2. Can you do this on a repeatable, reliable basis?
-
-So, if you're not happy with the answers you have, MLOps is a concept that can help you: 
-- a) to create or improve the organization culture for CI/CD applied to ML; 
-- b) to create an automated infrastructure that will support your processes.
-
+<img align="left" src="imgs/MLU_Logo.png">
 
 In this course, we will first overview how to architect end-to-end ML systems: from initial ML project scoping to data ingestion, from model training and deployment, to model serving, monitoring and maintenance. Through the lectures, we will explore the ML Systems of several key products and services within Amazon to get you inspired with a varied of ML system decisions. Beside, by reviewing some ML pitfalls, we provide some practical solutions for you to debug the ML systems.
 
