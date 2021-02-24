@@ -1,9 +1,9 @@
-# Amazon Sagemaker MLops (with classic CI/CD tools) Workshop
-Machine Learning Ops Workshop with SageMaker and CodePipeline: lab guides and materials.
+# MLU-MLOps Lab
+For lecture usage on the ML Operation (MLOps) course in Amazon Machine Learning University (MLU).
 
 ## Introduction
 
-<img align="left" src="imgs/eyecatch_sagemaker.png">
+<img align="left" src="imgs/MLU_logo.png">
 
 Data Scientists and ML developers need more than a Jupyter notebook to create a ML model, to test it, to put it into production and to integrate it with a portal and/or a basic web/mobile application, in a reliable and flexible way. 
 
@@ -14,28 +14,27 @@ There are two basic questions that you should consider when you start developing
 1. How long would it take your organization to deploy a change that involves a single line of code?
 2. Can you do this on a repeatable, reliable basis?
 
-So, if you're not happy with the answers you have, MLOps is a concept that can help you: a) to create or improve the organization culture for CI/CD applied to ML; b) to create an automated infrastructure that will support your processes.
+So, if you're not happy with the answers you have, MLOps is a concept that can help you: 
+- a) to create or improve the organization culture for CI/CD applied to ML; 
+- b) to create an automated infrastructure that will support your processes.
 
-In this workshop you'll see how to create/operate an automated ML pipeline using a traditional CI/CD tool, called [CodePipeline](https://aws.amazon.com/codepipeline/), to orchestrate the ML workflow. During the exercises you'll see how to create a Docker container from scratch with your own algorithm, start a training/deployment job by just copying a .zip file to an S3 repo, run A/B tests and more. This is a reference architecture that can be used as an inspiration to create your own solution.
 
-[Amazon Sagemaker](https://aws.amazon.com/sagemaker/), a service that supports the whole pipeline of a ML Model development lifecycle, is the heart of this solution. Around it, you can add several different services as the AWS Code* for creating an automated pipeline, building your docker images, train/test/deploy/integrate your models, etc.
+In this course, we will first overview how to architect end-to-end ML systems: from initial ML project scoping to data ingestion, from model training and deployment, to model serving, monitoring and maintenance. Through the lectures, we will explore the ML Systems of several key products and services within Amazon to get you inspired with a varied of ML system decisions. Beside, by reviewing some ML pitfalls, we provide some practical solutions for you to debug the ML systems.
 
-Here you can find more information about [DevOps](https://aws.amazon.com/devops/) at AWS ([What is DevOps](https://aws.amazon.com/pt/devops/what-is-devops/)).
+We structure the course as following:
 
-#### Some important references
+* Lecture 1: *what components* needed for an ML system (via an MiniAmazonGo example)
+* Lecture 2: what *questions (choices) to ask* for each component
+* Lecture 3-4: what *options* (answers to above questions) do you have for each component
+* Lecture 5: what *consequence* to be aware of (monitoring, social impact, etc.)
 
-Another AWS service that can used for this purpose is [Step Functions](
-https://aws-step-functions-data-science-sdk.readthedocs.io/en/latest/readmelink.html#getting-started-with-sample-jupyter-notebooks). In this link, you'll also find the documentation of the python library that can be executed directly from your Jupyter notebook.
+<img align="central" src="imgs/mlops_syllabus.png">
 
-[Apache AirFlow](https://airflow.apache.org/) is a poweful Open Source tool that can also be integrated with SageMaker. Curious? Just take a look on the [SageMaker Operators for AirFlow](https://sagemaker.readthedocs.io/en/stable/using_workflow.html).
 
-Ah, you have a Kubernetes cluster and want to integrate SageMaker to that and manage the ML Pipeline from the cluster. No problem, take a look on the [SageMaker Operators for Kubernetes](https://aws.amazon.com/blogs/machine-learning/introducing-amazon-sagemaker-operators-for-kubernetes/).
-
-Anyway, there are lots of workflow managers that can be perfectly integrated with SageMaker to do the same job! Pick yours and use your creativity to create your own MLOps plaform!
 
 ## Pre-Requisites
 
-### Services
+### Knowledge Check
 
 You should have some basic experience with:
   - Train/test a ML model
@@ -53,11 +52,11 @@ Some experience working with the AWS console is helpful as well.
 
 ### AWS Account
 
-In order to complete this workshop you'll need an AWS Account with access to the services above. There are resources required by this workshop that are eligible for the AWS free tier if your account is less than 12 months old. See the [AWS Free Tier](https://aws.amazon.com/free/) page for more details.
+ You'll need an AWS Account with access to the services above. There are resources required by this workshop that are eligible for the [AWS Free Tier](https://aws.amazon.com/free/) if your account is less than 12 months old. 
 
 ## Scenario
 
-In this workshop you'll implement and experiment a basic MLOps process, supported by an automated infrastructure for training/testing/deploying/integrating ML Models. It is comprised into four parts:
+In this course, you'll implement and experiment a basic MLOps process, supported by an automated infrastructure for training/testing/deploying/integrating ML Models. It is comprised into four parts:
 
 1. You'll start with a **WarmUp**, for reviewing the basic features of Amazon Sagemaker;
 2. Then you will **optionally** create a **Customized Docker Image** with your own algorithm. We'll use scikit-learn as our library;
@@ -93,25 +92,6 @@ For part 3 you'll make use of the following structure for training the model, te
 8. CodePipeline calls CloudFormation to deploy a model into production. This time, the endpoint will count with an AutoScaling policy for HA and Elasticity.
 9. Done.
 
-### Crisp DM
-
-<img align="left" src="imgs/crisp.png">
-
-It is important to mention that the process above was based on an Industry process for Data Mining and Machine Learning called [CRISP-DM](https://en.wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining).
-
-CRISP-DM stands for “Cross Industry Standard Process – Data Mining” and is an excellent skeleton to build a data science project around.
-
-</br></br></br></br></br></br></br>
-
-There are 6 phases to CRISP:
-   - **Business understanding**: Don’t dive into the data immediately! First take some time to understand: Business objectives, Surrounding context, ML problem category.
-   - **Data understanding**: Exploring the data gives us insights about tha paths we should follow.
-   - **Data preparation**: Data cleaning, normalization, feature selection, feature engineering, etc.
-   - **Modeling**: Select the algorithms, train your model, optimize it as necessary.
-   - **Evaluation**: Test your model with different samples, with real data if possible and decide if the model will fit the requirements of your business case.
-   - **Deployment**: Deploy into production, integrate it, do A/B tests, integration tests, etc.
-
-Notice the arrows in the diagram though. CRISP frames data science as a cyclical endeavor - more insights leads to better business understanding, which kicks off the process again.
 
 ## Instructions
 
